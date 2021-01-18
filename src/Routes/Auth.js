@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Input from "../Components/Input";
 import Button from "../Components/Button";
+import useInput from "../Hooks/useInput";
 import icon from "../instagram_ico.png";
 
 const Wrapper = styled.div`
@@ -55,6 +56,11 @@ const Img = styled.div`
 
 export default () => {
   const [action, setAction] = useState("logIn");
+  const username = useInput("");
+  const password = useInput("");
+
+  console.log(username, password);
+
   return (
     <Wrapper>
       <Form>
@@ -63,8 +69,8 @@ export default () => {
         </Img>
         {action === "logIn" ? (
           <form>
-            <Input placeholder={"Username"} />
-            <Input placeholder={"Password"} />
+            <Input placeholder={"Username"} {...username}/>
+            <Input placeholder={"Password"} {...password}/>
             <Button text={"Log in"} />
           </form>
         ) : (
