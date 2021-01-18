@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Input from "../Components/Input";
 import Button from "../Components/Button";
+import icon from "../instagram_ico.png";
 
 const Wrapper = styled.div`
   min-height: 80vh;
@@ -46,11 +47,20 @@ const Form = styled(Box)`
   }
 `;
 
+const Img = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 38px;
+`;
+
 export default () => {
   const [action, setAction] = useState("logIn");
   return (
     <Wrapper>
       <Form>
+        <Img>
+          <img src={icon} width="176px" height="52px" alt="instagram_ico" />
+        </Img>
         {action === "logIn" ? (
           <form>
             <Input placeholder={"Username"} />

@@ -22,6 +22,7 @@ const ListItem = styled.li`
 
 const Link = styled.a`
   color: ${(props) => props.theme.darkBlueColor};
+  text-decoration: none;
 `;
 
 const Copyright = styled.span`
