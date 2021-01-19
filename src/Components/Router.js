@@ -1,3 +1,4 @@
+import React from "react";
 import PropTypes from "prop-types";
 import { Route, Switch } from "react-router-dom";
 import Auth from "../Routes/Auth";
@@ -19,7 +20,7 @@ const AppRouter = ({ isLoggedIn }) => (
   <Switch>{isLoggedIn ? <LoggedInRoutes /> : <LoggedOutRoutes />}</Switch>
 );
 
-Router.PropTypes = {
+AppRouter.propTypes = {
     isLoggedIn: PropTypes.bool.isRequired
 }
 
