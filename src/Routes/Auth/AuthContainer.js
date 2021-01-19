@@ -39,7 +39,7 @@ export default () => {
           const { data:{requestSecret} } = await requestSecretMutation();
           if (!requestSecret) {
             toast.error("You don't have an account yet, create one");
-            setTimeout(() => setAction("signup"), 3000);
+            setTimeout(() => setAction("signUp"), 3000);
           } else {
             toast.success("Check your in box for your login secret");
             setAction("confirm");
@@ -81,9 +81,11 @@ export default () => {
                             token
                         }
                     });
+                } else {
+                    throw Error()
                 }
             } catch {
-                toast.error("Can't confirm secret");
+                toast.error("Can't confirm secret, check again");
             }
         }
     }
