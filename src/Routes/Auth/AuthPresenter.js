@@ -60,7 +60,7 @@ export default ({
     lastName,
     email,
     setAction,
-    onLogin
+    onSubmit
 }) => {
   return (
     <Wrapper>
@@ -69,13 +69,13 @@ export default ({
           <img src={icon} width="176px" height="52px" alt="instagram_ico" />
         </Img>
         {action === "logIn" ? (
-          <form onSubmit={onLogin}>
+          <form onSubmit={onSubmit}>
             <Input placeholder={"Email"} {...email} type="email"/>
             
             <Button text={"Log in"} />
           </form>
         ) : (
-          <form onSubmit={onLogin}>
+          <form onSubmit={onSubmit}>
             <Input placeholder={"First name"} {...firstName}/>
             <Input placeholder={"Last name"} {...lastName}/>
             <Input placeholder={"Email"} {...email} type="email"/>
