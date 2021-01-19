@@ -8,12 +8,12 @@ import Search from "../Routes/Search";
 import Profile from "../Routes/Profile";
 
 const LoggedInRoutes = () => (
-  <Switch>
+  <>
     <Route exact path="/" component={Feed} />
-    <Route path="/:username" compenent={Profile} />
-    <Route path="/search" component={Search} />
     <Route path="/explore" component={Explore} />
-  </Switch>
+    <Route path="/search" component={Search} />
+    <Route path="/:username" compenent={Profile} />
+  </>
 );
 
 const LoggedOutRoutes = () => (
