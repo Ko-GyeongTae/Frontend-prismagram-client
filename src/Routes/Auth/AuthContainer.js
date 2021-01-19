@@ -29,7 +29,6 @@ export default () => {
       lastName: lastName.value,
     },
   });
-
   const onSubmit = (e) => {
     e.preventDefault();
     if (action === "logIn") {
