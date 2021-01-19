@@ -3,6 +3,7 @@ import AuthPresenter from "./AuthPresenter";
 import useInput from "../../Hooks/useInput";
 import { LOG_IN } from "./AuthQueries";
 import { useMutation } from "react-apollo-hooks";
+import { toast } from "react-toastify";
 
 export default () => {
     const [action, setAction] = useState("logIn");
@@ -10,7 +11,16 @@ export default () => {
     const firstName = useInput("");
     const lastName = useInput("");
     const email = useInput("");
-    const [requestSecret] = useMutation(LOG_IN, {variables: {email: email.value}});
+    const [requestSecret] = useMutation(LOG_IN, {
+        update: (_, {data}) => {
+            const { requestSecret } = data;
+            if(!requestSecret){
+                toast.error("You don't have an account yet, create one");
+                setTimeout(() => setAction("signup"), 2000);
+            }
+        },
+        variables: {email: email.value}
+    });
     
     const onLogin = (e) => {
     e.preventDefault();
