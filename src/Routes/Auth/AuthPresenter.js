@@ -56,11 +56,11 @@ const Img = styled.div`
 export default ({
     action,
     username,
-    password,
     firstName,
     lastName,
     email,
-    setAction
+    setAction,
+    onLogin
 }) => {
   return (
     <Wrapper>
@@ -69,18 +69,18 @@ export default ({
           <img src={icon} width="176px" height="52px" alt="instagram_ico" />
         </Img>
         {action === "logIn" ? (
-          <form>
-            <Input placeholder={"Username"} {...username}/>
-            <Input placeholder={"Password"} {...password} type="password"/>
+          <form onSubmit={onLogin}>
+            <Input placeholder={"Email"} {...email} type="email"/>
+            
             <Button text={"Log in"} />
           </form>
         ) : (
-          <form>
+          <form onSubmit={onLogin}>
             <Input placeholder={"First name"} {...firstName}/>
             <Input placeholder={"Last name"} {...lastName}/>
             <Input placeholder={"Email"} {...email} type="email"/>
             <Input placeholder={"Username"} {...username}/>
-            <Input placeholder={"Password"} {...password} type="password"/>
+            
             <Button text={"Sign up"} />
           </form>
         )}
