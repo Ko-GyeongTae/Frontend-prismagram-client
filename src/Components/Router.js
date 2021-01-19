@@ -4,12 +4,14 @@ import { Route, Switch } from "react-router-dom";
 import Auth from "../Routes/Auth";
 import Feed from "../Routes/Feed";
 import Explore from "../Routes/Explore";
+import Search from "../Routes/Search";
 import Profile from "../Routes/Profile";
 
 const LoggedInRoutes = () => (
   <>
     <Route exact path="/" component={Feed} />
     <Route path="/:username" compenent={Profile} />
+    <Route path="/search" component={Search} />
     <Route path="/explore" component={Explore} />
   </>
 );
