@@ -55,11 +55,11 @@ export default () => {
                         key={post.id} 
                         id={post.id} 
                         user={post.user} 
-                        files={files}
-                        likeCount={likeCount}
-                        isLiked={isLiked}
-                        comments={comments}
-                        createdAt={createdAt}
+                        files={post.files}
+                        likeCount={post.likeCount}
+                        isLiked={post.isLiked}
+                        comments={post.comments}
+                        createdAt={post.createdAt}
                     />
                 ))
             }
