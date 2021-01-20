@@ -45,7 +45,7 @@ export default () => {
     const { data, loading } = useQuery(FEED_QUERY);
     return (
         <Wrapper>
-            {loading && <Loader />}
+            {loading && <Loader />}{!loading && data && data.seeFeed && "We have photos"}
         </Wrapper>
     );
 }
