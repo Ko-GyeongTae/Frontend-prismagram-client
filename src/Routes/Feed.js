@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { gql } from "apollo-boost";
 import { useQuery } from "react-apollo-hooks";
 import Loader from "../Components/Loader";
+import Post from "../Components/Post";
 
 const FEED_QUERY = gql`
     {
@@ -45,7 +46,23 @@ export default () => {
     const { data, loading } = useQuery(FEED_QUERY);
     return (
         <Wrapper>
-            {loading && <Loader />}{!loading && data && data.seeFeed && "We have photos"}
+            {loading && <Loader />}
+            {!loading && 
+                data && 
+                data.seeFeed && 
+                data.seeFeed.map(post => (
+                    <Post 
+                        key={post.id} 
+                        id={post.id} 
+                        user={post.user} 
+                        files={files}
+                        likeCount={likeCount}
+                        isLiked={isLiked}
+                        comments={comments}
+                        createdAt={createdAt}
+                    />
+                ))
+            }
         </Wrapper>
     );
 }
