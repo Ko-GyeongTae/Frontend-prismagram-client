@@ -78,7 +78,7 @@ export default ({
       </UserColumn>
     </Header>
     <Files>
-      {files && files.map((file) => <File id={file.id} src={file.url} />)}
+      {files && files.map((file) => <File key={file.id} id={file.id} src={file.url} />)}
     </Files>
     <Meta>
       <Buttons>
