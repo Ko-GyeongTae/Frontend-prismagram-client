@@ -3,7 +3,15 @@ import PropTypes from "prop-types";
 import useInput from "../../Hooks/useInput";
 import PostPresenter from "./PostPresenter";
 
-const PostContainer = ({ id, user, files }) => {
+const PostContainer = ({ 
+    id, 
+    user, 
+    files,
+    likeCount,
+    isLiked,
+    comments,
+    createdAt
+}) => {
   return <PostPresenter />;
 };
 
