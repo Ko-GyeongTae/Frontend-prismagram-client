@@ -19,6 +19,7 @@ const PostContainer = ({
   const [isLikedS, setIsLiked] = useState(isLiked);
   const [likeCountS, setLikeCount] = useState(likeCount);
   const [currentItem, setCurrentItem] = useState(0);
+  
   const comment = useInput("");
   const [toggleLikeMutation] = useMutation(TOGGLE_LIKE, {
     variables: { postId: id },
@@ -50,10 +51,11 @@ const PostContainer = ({
   };
 
   const onKeyPress = (e) => {
-    const { keyCode } = e;
-    if(keyCode === 13){
-        comment.setValue("");
-        //addCommentMutation();
+    const { which } = e;
+    if (which === 13) {
+      e.preventDefault();
+      comment.setValue("");
+      addCommentMutation();
     }
     return;
   };

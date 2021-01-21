@@ -152,7 +152,7 @@ export default ({
         placeholder={"Add a Comment"}
         value={newComment.value}
         onChange={newComment.onChange}
-        onKeyUp={onKeyPress}
+        onKeyPress={onKeyPress}
       />
     </Meta>
   </Post>
