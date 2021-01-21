@@ -4,7 +4,6 @@ import useInput from "../../Hooks/useInput";
 import PostPresenter from "./PostPresenter";
 import { ADD_COMMENT, TOGGLE_LIKE } from "./PostQueries";
 import { useMutation } from "react-apollo-hooks";
-import { toast } from "react-toastify";
 
 const PostContainer = ({
   id,
@@ -24,7 +23,7 @@ const PostContainer = ({
   const [toggleLikeMutation] = useMutation(TOGGLE_LIKE, {
     variables: { postId: id },
   });
-  const [addComment] = useMutation(ADD_COMMENT, {
+  const [addCommentMutation] = useMutation(ADD_COMMENT, {
     variables: { postId: id, text: comment.value },
   });
   const slide = () => {
@@ -50,6 +49,15 @@ const PostContainer = ({
     }
   };
 
+  const onKeyPress = (e) => {
+    const { keyCode } = e;
+    if(keyCode === 13){
+        comment.setValue("");
+        //addCommentMutation();
+    }
+    return;
+  };
+
   return (
     <PostPresenter
       user={user}
@@ -65,6 +73,7 @@ const PostContainer = ({
       setLikeCount={setLikeCount}
       currentItem={currentItem}
       toggleLike={toggleLike}
+      onKeyPress={onKeyPress}
     />
   );
 };
