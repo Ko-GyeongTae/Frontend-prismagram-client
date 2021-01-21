@@ -19,7 +19,7 @@ const PostContainer = ({
   const [isLikedS, setIsLiked] = useState(isLiked);
   const [likeCountS, setLikeCount] = useState(likeCount);
   const [currentItem, setCurrentItem] = useState(0);
-  
+  const [selfComments, setSelfComments] = useState([]);
   const comment = useInput("");
   const [toggleLikeMutation] = useMutation(TOGGLE_LIKE, {
     variables: { postId: id },
@@ -55,7 +55,10 @@ const PostContainer = ({
     if (which === 13) {
       e.preventDefault();
       comment.setValue("");
-      addCommentMutation();
+      setSelfComments([
+        ...selfComments,
+        { id: Math.floor(Math.random() * 100), text: comment.value, user: { username: "lalala" } },
+      ]);
     }
     return;
   };
@@ -76,6 +79,7 @@ const PostContainer = ({
       currentItem={currentItem}
       toggleLike={toggleLike}
       onKeyPress={onKeyPress}
+      selfComments={selfComments}
     />
   );
 };
