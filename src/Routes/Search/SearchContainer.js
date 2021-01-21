@@ -3,6 +3,8 @@ import { withRouter } from "react-router-dom";
 import SearchPresenter from "./SearchPresenter";
 import { useQuery } from "react-apollo-hooks";
 import { SEARCH } from "./SearchQueries";
+import Loader from "../../Components/Loader";
+import UserCard from "../../Components/UserCard";
 
 export default withRouter(({ location: { search } }) => {
   const term = search.split("=")[1];
@@ -12,5 +14,6 @@ export default withRouter(({ location: { search } }) => {
       term,
     },
   });
+  console.log(data);
   return <SearchPresenter searchTerm={term} loading={loading} data={data} />;
 });
