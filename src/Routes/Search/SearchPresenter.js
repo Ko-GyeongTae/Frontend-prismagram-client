@@ -8,7 +8,8 @@ const Wrapper = styled.div`
   text-align: center;
 `;
 
-const SearchPresenter = ({ searchTerm, loading }) => (
+const SearchPresenter = ({ searchTerm }) => (
+    console.log(searchTerm),
   <Wrapper>
     {searchTerm === undefined && <FatText text={"Search for something"} />}
   </Wrapper>
