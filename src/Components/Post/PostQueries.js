@@ -1,13 +1,13 @@
 import { gql } from "apollo-boost";
 
 export const TOGGLE_LIKE = gql`
-    mutation toggleLike($postId:Int!){
+    mutation toggleLike($postId:String!){
         toggleLike(postId: $postId)
     }
 `;
 
 export const ADD_COMMENT = gql`
-    mutation addComment($postId: Int!, $text: String!){
+    mutation addComment($postId: String!, $text: String!){
         addComment(postId: $postId, text: $text){
             id
             text
