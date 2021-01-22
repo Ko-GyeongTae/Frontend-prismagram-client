@@ -42,8 +42,7 @@ const NumberText = styled.span`
   font-size: 16px;
 `;
 
-const SquarePost = ({ link, likeCount, commentCount, file }) => {
-  console.log(link); //To link Post 
+const SquarePost = ({ likeCount, commentCount, file }) => {
   return (
     <Container bg={file.url}>
       <Overlay>
@@ -61,7 +60,6 @@ const SquarePost = ({ link, likeCount, commentCount, file }) => {
 };
 
 SquarePost.propTypes = {
-  link: PropTypes.object.isRequired,
   likeCount: PropTypes.number.isRequired,
   commentCount: PropTypes.number.isRequired,
   file: PropTypes.object.isRequired,
