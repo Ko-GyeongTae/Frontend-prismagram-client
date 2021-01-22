@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { gql } from "apollo-boost";
 import { useQuery } from "react-apollo-hooks";
 import { withRouter } from "react-router-dom";
+import Loader from "../Components/Loader";
 
 const GET_USER = gql`
   query seeUser($username: String!) {
@@ -11,7 +12,8 @@ const GET_USER = gql`
       avatar
       username
       fullName
-      isFollowingisSelf
+      isFollowing
+      isSelf
       bio
       followingCount
       followersCount
@@ -29,9 +31,29 @@ const GET_USER = gql`
   }
 `;
 
-export default withRouter((props) => {
-    const { data, loading } = useQuery(GET_USER);
-    if(loading) return <p>loading...</p>
-    console.log(props);
-    return null;
+
+
+export default withRouter(({match:{params:{username}}}) => {
+    const { data, loading } = useQuery(GET_USER, {variables:{username}});
+    if(loading) {
+      return <Loader />;
+    } else {
+      console.log(data);
+      const {
+        seeUser: {
+          avatar,
+          username,
+          fullName,
+          isFollowing,
+          isSelf,
+          bio,
+          followingCount,
+          followersCount,
+          postsCount,
+          posts
+        }
+      } = data;
+      return null;
+    }
+    
 });
