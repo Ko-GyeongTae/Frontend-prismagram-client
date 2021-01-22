@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import FatText from "../../Components/FatText";
 import Loader from "../../Components/Loader";
 import UserCard from "../../Components/UserCard";
-import { Link } from "react-router-dom";
+import Post from "../../Components/squarePost";
 
 const Wrapper = styled.div`
   height: 50vh;
@@ -14,7 +14,7 @@ const Section = styled.div`
   margin-bottom: 50px;
   display: grid;
   grid-gap: 25px;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 160px);
   grid-template-rows: 160px;
   grid-auto-rows: 160px;
 `;
@@ -55,7 +55,13 @@ const SearchPresenter = ({ searchTerm, loading, data }) => {
           {data.searchPost.length === 0 ? (
             <FatText text="No Posts Found" />
           ) : (
-            data.searchPost.map((post) => null)
+            data.searchPost.map((post) => (
+              <Post
+                likeCount={post.likeCount}
+                commentCount={post.commentCount}
+                file={post.files[0]}
+              />
+            ))
           )}
         </Section>
       </Wrapper>
