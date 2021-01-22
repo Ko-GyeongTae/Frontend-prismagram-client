@@ -4,6 +4,7 @@ import { gql } from "apollo-boost";
 import { useQuery } from "react-apollo-hooks";
 import { withRouter } from "react-router-dom";
 import Loader from "../Components/Loader";
+import Avatar from "../Components/Avatar";
 
 const GET_USER = gql`
   query seeUser($username: String!) {
@@ -31,13 +32,32 @@ const GET_USER = gql`
   }
 `;
 
+const Wrapper = styled.div`
+  min-height: 60vh;
+`;
 
+const Header = styled.header`
 
-export default withRouter(({match:{params:{username}}}) => {
-    const { data, loading } = useQuery(GET_USER, {variables:{username}});
-    if(loading) {
-      return <Loader />;
-    } else {
+`;
+
+const HeaderColumn = styled.div`
+
+`;
+
+export default withRouter(
+  ({
+    match: {
+      params: { username },
+    },
+  }) => {
+    const { data, loading } = useQuery(GET_USER, { variables: { username } });
+    if (loading) {
+      return (
+        <Wrapper>
+          <Loader />
+        </Wrapper>
+      );
+    } else if (!loading && data && data.seeUser){
       console.log(data);
       const {
         seeUser: {
@@ -50,10 +70,18 @@ export default withRouter(({match:{params:{username}}}) => {
           followingCount,
           followersCount,
           postsCount,
-          posts
-        }
+          posts,
+        },
       } = data;
-      return null;
+      return (
+        <>
+          <Header>
+            <HeaderColumn>
+              <Avatar size="lg" url={avatar} />
+            </HeaderColumn>
+          </Header>
+        </>
+      );
     }
-    
-});
+  }
+);
