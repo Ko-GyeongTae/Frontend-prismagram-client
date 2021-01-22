@@ -63,7 +63,7 @@ const HeaderLink = styled(Link)`
   }
 `;
 
-export default withRouter (({ history }) => {
+export default withRouter(({ history }) => {
   const search = useInput("");
   const { data } = useQuery(ME);
   console.log(`Header useQuery : ${data}`);
@@ -82,15 +82,13 @@ export default withRouter (({ history }) => {
           </Link>
         </HeaderColumn>
         <HeaderColumn>
-          <Link to="/search">
-            <form onSubmit={onSearchSubmit}>
-              <SearchInput
-                value={search.value}
-                onChange={search.onChange}
-                placeholder="Search"
-              />
-            </form>
-          </Link>
+          <form onSubmit={onSearchSubmit}>
+            <SearchInput
+              value={search.value}
+              onChange={search.onChange}
+              placeholder="Search"
+            />
+          </form>
         </HeaderColumn>
         <HeaderColumn>
           <HeaderLink to="/explore">
