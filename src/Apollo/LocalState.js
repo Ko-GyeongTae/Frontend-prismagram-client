@@ -14,7 +14,13 @@ export const resolvers = {
             return null;
         },
         logUserOut: (_, __, {cache}) => {
+            console.log("logUserMutation");
             localStorage.removeItem("token");
+            cache.writeData({
+                data:{
+                    isLoggedIn: false
+                }
+            });
             window.location = "/";
             return null;
         }
