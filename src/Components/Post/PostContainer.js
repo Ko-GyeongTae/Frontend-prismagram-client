@@ -36,10 +36,11 @@ const PostContainer = ({
       setTimeout(() => setCurrentItem(currentItem + 1), 2000);
     }
   };
+  
   useEffect(() => {
     slide();
   }, [currentItem]);
-
+  
   const toggleLike = () => {
     toggleLikeMutation();
     if (isLikedS === true) {

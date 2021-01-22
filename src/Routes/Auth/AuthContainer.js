@@ -82,7 +82,7 @@ export default () => {
                         }
                     });
                 } else {
-                    throw Error()
+                    throw Error();
                 }
             } catch {
                 toast.error("Can't confirm secret, check again");
