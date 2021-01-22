@@ -45,7 +45,7 @@ const NumberText = styled.span`
 const SquarePost = ({ link, likeCount, commentCount, file }) => {
   console.log(link); //To link Post 
   return (
-    <Container key={file.id} bg={file.url}>
+    <Container bg={file.url}>
       <Overlay>
         <Number>
           <HeartFull />
