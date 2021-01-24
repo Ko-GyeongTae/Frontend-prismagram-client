@@ -60,10 +60,9 @@ export default ({
   firstName,
   lastName,
   email,
-  password,
   setAction,
   onSubmit,
-  secret,
+  secret
 }) => {
   return (
     <Wrapper>
@@ -78,7 +77,6 @@ export default ({
             </Helmet>
             <form onSubmit={onSubmit}>
               <Input placeholder={"이메일"} {...email} type="email" />
-              <Input placeholder={"암호"} {...password} type="password" />
               <Button text={"로그인"} />
             </form>
           </>
@@ -93,8 +91,6 @@ export default ({
               <Input placeholder={"성"} {...firstName} />
               <Input placeholder={"이름"} {...lastName} />
               <Input placeholder={"이메일"} {...email} type="email" />
-              <Input placeholder={"암호"} {...password} type="password" />
-              <Input placeholder={"암호확인"} {...password} type="password" />
               <Button text={"회원가입"} />
             </form>
           </>
