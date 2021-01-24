@@ -60,6 +60,7 @@ export default ({
   firstName,
   lastName,
   email,
+  password,
   setAction,
   onSubmit,
   secret,
@@ -73,36 +74,39 @@ export default ({
         {action === "logIn" && (
           <>
             <Helmet>
-              <title>Log In | Prismagram</title>
+              <title>로그인</title>
             </Helmet>
             <form onSubmit={onSubmit}>
-              <Input placeholder={"Email"} {...email} type="email" />
-              <Button text={"Log in"} />
+              <Input placeholder={"이메일"} {...email} type="email" />
+              <Input placeholder={"암호"} {...password} type="password" />
+              <Button text={"로그인"} />
             </form>
           </>
         )}
         {action === "signUp" && (
           <>
             <Helmet>
-              <title>Sign Up | Prismagram</title>
+              <title>회원가입</title>
             </Helmet>
             <form onSubmit={onSubmit}>
-              <Input placeholder={"First name"} {...firstName} />
-              <Input placeholder={"Last name"} {...lastName} />
-              <Input placeholder={"Email"} {...email} type="email" />
-              <Input placeholder={"Username"} {...username} />
-              <Button text={"Sign up"} />
+              <Input placeholder={"닉네임"} {...username} />
+              <Input placeholder={"성"} {...firstName} />
+              <Input placeholder={"이름"} {...lastName} />
+              <Input placeholder={"이메일"} {...email} type="email" />
+              <Input placeholder={"암호"} {...password} type="password" />
+              <Input placeholder={"암호확인"} {...password} type="password" />
+              <Button text={"회원가입"} />
             </form>
           </>
         )}
         {action === "confirm" && (
           <>
             <Helmet>
-              <title>Confirm Secret | Prismagram</title>
+              <title>이메일 인증</title>
             </Helmet>
             <form onSubmit={onSubmit}>
-              <Input placeholder="Paste your secret" required {...secret} />
-              <Button text={"Confirm"} />
+              <Input placeholder="코드입력" required {...secret} />
+              <Button text={"확인"} />
             </form>
           </>
         )}
@@ -111,13 +115,13 @@ export default ({
         <StateChanger>
           {action === "logIn" ? (
             <>
-              Don't have an account?{" "}
-              <Link onClick={() => setAction("signUp")}>Sign up</Link>
+              계정이 없으신가요?{" "}
+              <Link onClick={() => setAction("signUp")}>회원가입</Link>
             </>
           ) : (
             <>
-              Have an account?{" "}
-              <Link onClick={() => setAction("logIn")}>Log in</Link>
+              계정이 있으신가요?{" "}
+              <Link onClick={() => setAction("logIn")}>로그인</Link>
             </>
           )}
         </StateChanger>
